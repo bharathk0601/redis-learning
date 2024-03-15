@@ -1,0 +1,42 @@
+HSET |HMSET myhash key1 val1 key2 val2
+(integer) 2
+
+HGETALL myhash
+1) "key1"
+2) "val1"
+3) "key2"
+4) "val2"
+
+HGET myhash key1
+"val1"
+
+HMGET myhash key1 key2
+1) "val1"
+2) "val2"
+
+HKEYS myhash
+1) "key1"
+2) "key2"
+
+HVALS myhash
+1) "val1"
+2) "val2"
+
+HEXISTS myhash key1
+(integer) 1
+
+HDEL myhash key1
+(integer) 1
+
+HINCRBY myhash incr 1
+(integer) 1
+
+ HLEN myhash
+(integer) 2
+
+HINCRBYFLOAT myhash fincr 0.1
+"0.1"
+
+HSETNX key field value
+Sets the value of a hash field, only if the field does not exist
+

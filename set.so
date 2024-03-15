@@ -1,0 +1,70 @@
+-- Legend
+src - source
+dst - destination
+[] - optional
+
+SADD set 1 2 3
+(integer) 3
+
+SMEMBERS set
+1) "1"
+2) "2"
+3) "3"
+
+SISMEMBER set 1 -- checks whether element is present in the set
+(integer) 1
+127.0.0.1:6379> SISMEMBER set 10
+(integer) 0
+127.0.0.1:6379> 
+
+SCARD set -- returns number of elements
+(integer) 3
+
+SADD set2 2 3 4 5
+(integer) 0
+
+SDIFF set set2 -- subtracts the common element
+1) "1"
+
+SDIFF[STORE] set3(dst) set set2 -- stores the result in set3
+(integer) 1
+127.0.0.1:6379> SMEMBERS set3
+1) "1"
+127.0.0.1:6379> 
+
+SINTER[STORE] set4 set set2
+(integer) 2
+127.0.0.1:6379> SMEMBERS set4
+1) "2"
+2) "3"
+
+SMOVE set(src) set5(dst) 1 -- (cut paste)
+(integer) 1
+SMEMBERS set5
+1) "1"
+
+SPOP set 2  -- Removes and returns a random member from a set
+1) "2"
+2) "3"
+
+SRANDMEMBER set2 2 (returns 2 random elemnt from set)
+1) "5"
+2) "4"
+
+SREM set 2 3 -- removes the set element by value
+(integer) 0
+
+SUNIONSTORE set6 set2 set3
+(integer) 4
+127.0.0.1:6379> SMEMBERS set6
+1) "2"
+2) "3"
+3) "4"
+4) "5"
+
+
+
+
+
+
+

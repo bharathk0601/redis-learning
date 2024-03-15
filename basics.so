@@ -1,0 +1,31 @@
+SET name jhon
+
+TTL name
+
+SETEX name 10 (expire in seconds) jhon
+
+EXPIRE name1 20
+
+INCR incr (increments key by 1)
+
+DECR incr (decrements key by 1)
+
+GET incr
+
+INCRBY incr2 2 (returns incremented value)
+
+DECRBY test 2 (returns decremented value)
+
+DEL test
+
+EXISTS mylist
+(integer) 1
+
+
+
+
+
+
+
+
+

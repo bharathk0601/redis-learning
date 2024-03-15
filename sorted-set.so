@@ -1,0 +1,63 @@
+-- BASICS
+
+ZADD sset 10(score) bharath 5 manoj
+(integer) 2
+
+ZCARD sset
+(integer) 2
+
+ZINCRBY sset 2 manoj -- increments the score
+"7"
+
+ZREVRANGE sset 0 -1 [WITHSCORES]
+1) "bharath"
+2) "10"
+3) "manoj"
+4) "7"
+
+ZRANK sset bharath (rank will be assigned ascending order bo score starts from 0)
+(integer) 1
+
+ZSCORE sset manoj -- returns the score
+"7"
+
+ZCOUNT sset 0 9 -- The command ZCOUNT will count the members between the min and the max score.
+(integer) 1 (manoj)
+
+ZREM sset manoj -- removes the elemnt from sorted set
+(integer) 1
+
+ZADD sset 12 bharath
+(integer) 0
+
+----------------------------------------------------------------------------
+ZRANGE sset 0 -1 WITHSCORES
+1) "bharath"
+2) "12"
+
+ZADD sset 13 ll
+(integer) 1
+127.0.0.1:6379> ZREVRANGE sset 0 -1 WITHSCORES
+1) "ll"
+2) "13"
+3) "manoj"
+4) "12"
+5) "bharath"
+6) "12"
+
+ZRANGE sset 0 -1 WITHSCORES
+1) "bharath"
+2) "12"
+3) "manoj"
+4) "12"
+5) "ll"
+6) "13"
+-------------------------------------------------------------------------------------
+
+NOTE:
+ZRANGE sset 0 -1 WITHSCORES [BYSCORE|BYLEX] [REV] [LIMIT offset count] [WITHSCORES]
+
+
+
+
+
